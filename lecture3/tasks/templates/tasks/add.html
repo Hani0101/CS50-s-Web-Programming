@@ -1,9 +1,33 @@
 {%extends "tasks/layout.html"%}
 
 {% block body %}
+
+    <style>
+        h1{
+            text-align: center;
+        }
+        form{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        input{
+            margin: 10px;
+        }
+        a{
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;       
+         }
+    </style>
     <h1>add task</h1>
-    <form>
-        <input type="text", name="task">
+    <form action="{% url 'tasks:add' %}" method="post">
+        {% csrf_token %}
+
+        {{ form }}
+
         <input type="submit">
     </form>
+    <a href="{% url 'tasks:index' %}">view tasks</a>
 {% endblock %}
